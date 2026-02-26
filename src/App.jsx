@@ -5,9 +5,9 @@ function App() {
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
 
-  const reverseTasks = () => {
-    const reversed = [...tasks].reverse();
-  }
+  const reversedTasks = () => {
+    setTasks([...tasks].reverse());
+  };
 
   const shiftTask = () => {
     const newTasks = [...tasks];
@@ -92,6 +92,7 @@ function App() {
             <button onClick={() => spliceTask(1)}>Splice</button>
           </div>
           <div className="extra-buttons">
+            <button onClick={reversedTasks}>Reverse</button>
             <button onClick={shiftTask}>Shift</button>
             <button onClick={sliceTasks}>Slice</button>
             <button onClick={sortTasks}>Sort</button>
