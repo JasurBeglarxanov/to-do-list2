@@ -5,6 +5,30 @@ function App() {
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
 
+  const reverseTasks = () => {
+    const reversed = [...tasks].reverse();
+  }
+
+  const shiftTask = () => {
+    const newTasks = [...tasks];
+    newTasks.shift();
+    setTasks(newTasks);
+  };
+
+  const sliceTasks = () => {
+    setTasks(tasks.slice(0, 3));
+  };
+
+  const sortTasks = () => {
+    setTasks([...tasks].sort());
+  };
+
+  const spliceTask = (index) => {
+    const newTasks = [...tasks];
+    newTasks.splice(index, 1);
+    setTasks(newTasks);
+  };
+
   const addTask = () => {
     if (task.trim() === "") return;
     setTasks([...tasks, task]);
@@ -65,6 +89,12 @@ function App() {
           </div>
           <div className="deleteAll">
             <button onClick={() => deleteAll()}> Delete All</button>
+            <button onClick={() => spliceTask(1)}>Splice</button>
+          </div>
+          <div className="extra-buttons">
+            <button onClick={shiftTask}>Shift</button>
+            <button onClick={sliceTasks}>Slice</button>
+            <button onClick={sortTasks}>Sort</button>
           </div>
         </div>
       </div>
